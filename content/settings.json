@@ -23,11 +23,12 @@
       "ctaButton": {
         "openNewTab": true,
         "label": "resume",
-        "url": "/resume.pdf"
+        "url": "https://drive.google.com/file/d/13Hwh4tLnN11ekFNyNPjEhxBgcu_DbGtH/view?usp=sharing"
       },
       
       "footer": [
-        { "label": "privacy", "url": "/privacy" }
+        { "label": "privacy", "url": "/privacy" },
+        { "label": "testing", "url": "/testing" }
       ]
     },
     "featureToggles": {
