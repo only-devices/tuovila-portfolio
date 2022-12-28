@@ -1,4 +1,7 @@
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
   plugins: [
     {
       resolve: "gatsby-theme-portfolio-minimal",
