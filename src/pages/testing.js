@@ -24,13 +24,13 @@ if (typeof window !== "undefined") {
           alert('Having trouble with your left mouse button much?');
         }
         if (lsType === 'rage_click_signal') {
-          alert('Wow, you seem angry!');
+          alert('*** PC LOAD LETTER ***');
         }
         if (lsType === 'repeated_scrolling_signal') {
-          alert('Websites sure are difficult to use! Try the search bar, dumbass.');
+          alert('Interneting is hard! Maybe try the search bar');
         }
         if (lsType === 'exit_intent_signal') {
-          alert('Oh no, please don\'t leave!');
+          alert('Oh no, please don\'t leave! Eh, nevermind');
         }
       },
       false
@@ -52,6 +52,8 @@ export default function IndexPage() {
                 <br></br>
                 <img src={chicagoHdImg} alt="cool chicago pic" height={400} data-cs-mask></img>
               </div>
+          </Section>
+          <Section heading="Here's a fake form!">
               <div>
                 <form action="/submit">
                   <label htmlFor="firstName">First name: (field below has data-cs-encrypt)

@@ -15,7 +15,7 @@
     }
   },
   "siteConfiguration": {
-    "logo": { "text": "eric tuovila" },
+    "logo": { "text": "tuovila.com" },
     "navigation": {
       "header": [
         { "label": "about", "url": "/#about" }
