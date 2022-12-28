@@ -1,4 +1,7 @@
 module.exports = {
+    flags: {
+        DEV_SSR: true
+      },
     plugins: [
         {
             resolve: 'gatsby-theme-portfolio-minimal',
@@ -19,6 +22,21 @@ module.exports = {
                     usePathPrefixForArticles: true, // Default true (i.e. path will be /blog/first-article)
                 },
             },
+            
         },
+        {
+            resolve: "gatsby-plugin-google-tagmanager",
+            options: {
+              id: "GTM-K4GTT8V",
+              includeInDevelopment: false,
+              defaultDataLayer: function () {
+                return {
+                  pageType: window.pageType,
+                }
+              },
+              routeChangeEventName: "routeChangeEvent",
+              enableWebVitalsTracking: false,
+            },
+          },
     ],
 };
