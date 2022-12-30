@@ -55,7 +55,7 @@ export default function IndexPage() {
           </Section>
           <Section heading="Here's a fake form!">
               <div>
-                <form action="/submit">
+                <form name="test" action="/submit" data-netlify="true">
                   <label htmlFor="firstName">First name: (field below has data-cs-encrypt)
                     <div><input type="text" id="firstName-input" name="firstName" required={true} data-cs-encrypt /></div><br />
                   </label>
