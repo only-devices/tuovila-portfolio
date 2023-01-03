@@ -11,7 +11,20 @@ function triggerRecording(recType) {
   if (recType === 'ETS') {
     window._uxa.push(['trackEventTriggerRecording', '@ETS@buttonClicked']);
   }
-  console.log(`*** ${recType} recording triggered!`);
+  console.log(`*** ${recType} recording triggered! ***`);
+}
+
+function excludeCsRecording(urlRegex) {
+  window._uxa = window._uxa || [];
+  console.log(urlRegex);
+  window._uxa.push(['excludeURLforReplay', urlRegex]);
+  alert(`Success! Pages with paths matching regex: '${urlRegex}' will be excluded from Session Replay recording for this session!`);
+  var elements = document.getElementsByTagName("input");
+for (var ii=0; ii < elements.length; ii++) {
+  if (elements[ii].type === "text") {
+    elements[ii].value = "";
+  }
+}
 }
 
 if (typeof window !== "undefined") { 
@@ -43,8 +56,16 @@ export default function IndexPage() {
           <Section heading="This heading does not have any special attributes.">
               <p data-cs-encrypt>This field has the <code>data-cs-encrypt</code> attribute.</p>
               <div data-cs-mask>This field has the <code>data-cs-mask</code> attribute.</div><br />
-              <button onClick={() => triggerRecording('ETP')}>Trigger ETP (page) Recording</button><br />
-              <button onClick={() => triggerRecording('ETS')}>Trigger ETS (session) Recording</button><br />
+              <div>
+                <button onClick={() => triggerRecording('ETP')}>Trigger ETP (page) Recording</button><br />
+                <button onClick={() => triggerRecording('ETS')}>Trigger ETS (session) Recording</button><br />
+              </div><br />
+              <div>
+                <label htmlFor="excludePage">Enter exclude page regex: </label>
+                <input type="text" id="excludePage-input" name="excludePage" required={true} /><br />
+                <button onClick={() => excludeCsRecording(document.getElementById('excludePage-input').value)}>Enable SR Exclusion</button><br />
+                <p>Check to see if SR exclusion works using <a href="/do-not-record">this page</a>.</p>
+              </div>
           </Section>
           <Section heading="Here's another heading without any attributes.">
               <div>
