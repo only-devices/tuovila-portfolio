@@ -15,7 +15,7 @@
     }
   },
   "siteConfiguration": {
-    "logo": { "text": "tuovila.com" },
+    "logo": { "text": "" },
     "navigation": {
       "header": [
         { "label": "about", "url": "/#about" }

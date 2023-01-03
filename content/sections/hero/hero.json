@@ -1,7 +1,7 @@
 {
   "intro": "Hi, I'm eric!",
   "heroPhoto": {
-    "src": "../../images/lego-dummy.png",
+    "src": "../../images/lego-avatar.jpg",
     "alt": "My Photo"
   },
   "image": {
@@ -10,11 +10,11 @@
   },
   "title": "",
   "subtitle": {
-    "prefix": "",
-    "highlight": "",
-    "suffix": ""
+    "prefix": "I'm a husband. I'm a dad. I'm a technology enthusiast and a fan of ",
+    "highlight": "8-string guitars",
+    "suffix": "."
   },
-  "description": "I'm a husband. I'm a dad. I'm a technology enthusiast and a fan of 8-string guitars.",
+  "description": "",
   "socialProfiles": {
     "from": ["LinkedIn", "GitHub", "Mail"],
     "showIcons": true
