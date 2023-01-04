@@ -8,7 +8,7 @@ import {
 export default function IndexPage() {
   return (
     <>
-      <Page>
+      <Page useSplashScreenAnimation>
         <HeroSection sectionId="hero" />
         <AboutSection sectionId="about" heading="about me" />
       </Page>

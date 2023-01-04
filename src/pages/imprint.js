@@ -5,7 +5,7 @@ export default function ImprintPage() {
   return (
     <>
       <Seo title="Imprint" useTitleTemplate={true} noIndex={true} />
-      <Page>
+      <Page useSplashScreenAnimation>
         <LegalSection sectionId="imprint" heading="Imprint" />
       </Page>
     </>
