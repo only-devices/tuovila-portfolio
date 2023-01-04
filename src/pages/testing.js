@@ -1,7 +1,22 @@
 import React from "react";
 import { Page, Section } from 'gatsby-theme-portfolio-minimal';
 import chicagoHdImg from "./images/sawyer-bengtson-umRPY9w3q1c-unsplash.jpg";
-
+// Generate a number between 0 and 10, including 10
+function generateRandomInt(max) {
+  return Math.floor(Math.random() * max) + 1;
+}
+const dynId = generateRandomInt(10000)+'-'+generateRandomInt(10000)+'-'+generateRandomInt(10000);
+console.log(dynId);
+// Reset all input fields on the page
+function resetInputs() {
+  var elements = document.getElementsByTagName("input");
+  for (var ii=0; ii < elements.length; ii++) {
+    if (elements[ii].type === "text") {
+      elements[ii].value = "";
+    }
+  }
+}
+// ETR function
 function triggerRecording(recType) {
   window._uxa = window._uxa || [];
   console.log(recType);
@@ -13,20 +28,23 @@ function triggerRecording(recType) {
   }
   console.log(`*** ${recType} recording triggered! ***`);
 }
-
+// Exclude CS SR function
 function excludeCsRecording(urlRegex) {
   window._uxa = window._uxa || [];
   console.log(urlRegex);
   window._uxa.push(['excludeURLforReplay', urlRegex]);
   alert(`Success! Pages with paths matching regex: '${urlRegex}' will be excluded from Session Replay recording for this session!`);
-  var elements = document.getElementsByTagName("input");
-for (var ii=0; ii < elements.length; ii++) {
-  if (elements[ii].type === "text") {
-    elements[ii].value = "";
-  }
+  resetInputs();
 }
+// setEncryptionSelectors function
+function setEncryptedCaptures(encryptEls) {
+  window._uxa = window._uxa || [];
+  console.log(encryptEls);
+  window._uxa.push(['setEncryptionSelectors', encryptEls]);
+  alert(`Success! The following elements will be captured and encrypted: '${encryptEls}'`);
+  resetInputs();
 }
-
+// Live Signals alerts
 if (typeof window !== "undefined") { 
     window.addEventListener(
       "Contentsquare_LiveSignal",
@@ -66,12 +84,15 @@ export default function IndexPage() {
                 <button onClick={() => excludeCsRecording(document.getElementById('excludePage-input').value)}>Enable SR Exclusion</button><br />
                 <p>Check to see if SR exclusion works using <a href="/do-not-record">this page</a>.</p>
               </div>
-          </Section>
-          <Section heading="Here's another heading without any attributes.">
               <div>
-                Let's try masking this image:
-                <br></br>
-                <img src={chicagoHdImg} alt="cool chicago pic" height={400} data-cs-mask></img>
+                <label htmlFor="encryptElements">Enter selectors of elements to mask, capture, and encrypt: </label>
+                <input type="text" id="encryptEls-input" name="encryptElements" required={true} /><br />
+                <button onClick={() => setEncryptedCaptures(document.getElementById('encryptEls-input').value)}>Capture & Encrypt Elements</button><br />
+              </div>
+          </Section>
+          <Section heading="*** DYNAMIC ELEMENT ID ALERT ***">
+              <div>
+                The ID of <span id={dynId}><b>this specific string</b></span> is <i>{dynId}</i>. Use it in the above input boxes accordingly.
               </div>
           </Section>
           <Section heading="Here's a fake form!">
@@ -86,8 +107,18 @@ export default function IndexPage() {
                   <label htmlFor="jobTitle">Job Title: (field below has data-cs-encrypt)
                     <div><input type="text" id="jobTitle-input" name="jobTitle" /></div><br />
                   </label>
+                  <label htmlFor="fraudBox">Do fraudulent behavior here
+                    <div><input type="text" id="fraudBox-input" name="fraudBox" /></div><br />
+                  </label>
                   <div><input type="submit" value="Submit" /></div>
                 </form>
+              </div>
+          </Section>
+          <Section heading="Here's another heading without any attributes.">
+              <div>
+                Let's try masking this image:
+                <br></br>
+                <img src={chicagoHdImg} alt="cool chicago pic" height={400} data-cs-mask></img>
               </div>
           </Section>
         </Page>
