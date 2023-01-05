@@ -61,7 +61,10 @@ if (typeof window !== "undefined") {
           alert('Interneting is hard! Maybe try the search bar');
         }
         if (lsType === 'exit_intent_signal') {
-          alert('Oh no, please don\'t leave! Eh, nevermind');
+          alert('Oh no, please don\'t leave! Fine, whatever. Just go.');
+        }
+        if (lsType === 'excessive_pastes_fraud_signal') {
+          alert('Look, the promo code is invalid, okay?');
         }
       },
       false
