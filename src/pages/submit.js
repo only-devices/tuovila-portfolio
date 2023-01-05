@@ -1,5 +1,5 @@
 import React from "react";
-import { Page, Section } from 'gatsby-theme-portfolio-minimal';
+import { Page, Section, Seo } from 'gatsby-theme-portfolio-minimal';
 
 // Generate a number between 0 and 10, including 10
 function generateRandomInteger(max) {
@@ -10,6 +10,8 @@ const orderNo = generateRandomInteger(10000000);
 
 export default function IndexPage() {
   return (
+    <>
+      <Seo title="Process failed successfully!" />
       <Page>
         <Section heading="Information Submitted!">
         <div>
@@ -19,5 +21,6 @@ export default function IndexPage() {
         </div>
         </Section>
       </Page>
+    </>
   );
 }

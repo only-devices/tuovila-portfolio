@@ -9,7 +9,7 @@ import {
 export default function IndexPage() {
   return (
     <>
-      <Seo title="tuovila.com" />
+      <Seo title="eric tuovila" />
       <Page useSplashScreenAnimation>
         <HeroSection sectionId="hero" />
         <AboutSection sectionId="about" heading="about me" />

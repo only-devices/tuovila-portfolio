@@ -1,5 +1,5 @@
 import React from "react";
-import { Page, Section } from 'gatsby-theme-portfolio-minimal';
+import { Page, Section, Seo } from 'gatsby-theme-portfolio-minimal';
 import chicagoHdImg from "./images/sawyer-bengtson-umRPY9w3q1c-unsplash.jpg";
 // Generate a number between 0 and 10, including 10
 function generateRandomInt(max) {
@@ -70,6 +70,8 @@ if (typeof window !== "undefined") {
 
 export default function IndexPage() {
     return (
+      <>
+        <Seo title="super secret testing area" />
         <Page>
           <Section heading="This heading does not have any special attributes.">
               <p data-cs-encrypt>This field has the <code>data-cs-encrypt</code> attribute.</p>
@@ -122,5 +124,6 @@ export default function IndexPage() {
               </div>
           </Section>
         </Page>
+      </>
     );
 }
