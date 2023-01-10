@@ -6,7 +6,6 @@ function generateRandomInt(max) {
   return Math.floor(Math.random() * max) + 1;
 }
 const dynId = generateRandomInt(10000)+'-'+generateRandomInt(10000)+'-'+generateRandomInt(10000);
-console.log(dynId);
 // Reset all input fields on the page
 function resetInputs() {
   var elements = document.getElementsByTagName("input");
@@ -39,10 +38,28 @@ function excludeCsRecording(urlRegex) {
 // setEncryptionSelectors function
 function setEncryptedCaptures(encryptEls) {
   window._uxa = window._uxa || [];
-  console.log(encryptEls);
+  console.log('*** Encrypting selectors: ' + encryptEls);
   window._uxa.push(['setEncryptionSelectors', encryptEls]);
   alert(`Success! The following elements will be captured and encrypted: '${encryptEls}'`);
   resetInputs();
+}
+// Error function
+function setError(errType) {
+  window._uxa = window._uxa || [];
+  var errId = generateRandomInt(1000000);
+  console.log('*** Error triggered: ' + errType);
+  if (errType === 'js') {
+    window._uxa.push([
+      'trackError',
+      'JS error manually generated',
+      {
+        'type': 'javascript',
+        'initiator': 'button_click',
+        'errId': errId
+      }
+    ]);
+    console.error('JavaScript error: ' + errId);
+  }
 }
 // Live Signals alerts
 if (typeof window !== "undefined") { 
@@ -82,6 +99,7 @@ export default function IndexPage() {
               <div>
                 <button onClick={() => triggerRecording('ETP')}>Trigger ETP (page) Recording</button><br />
                 <button onClick={() => triggerRecording('ETS')}>Trigger ETS (session) Recording</button><br />
+                <button onClick={() => setError('js')}>Trigger JS Error</button><br />
               </div><br />
               <div>
                 <label htmlFor="excludePage">Enter exclude page regex: </label>
