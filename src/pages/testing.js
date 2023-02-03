@@ -1,6 +1,6 @@
 import React from "react";
 import { Page, Section, Seo } from 'gatsby-theme-portfolio-minimal';
-import chicagoHdImg from "./images/sawyer-bengtson-umRPY9w3q1c-unsplash.jpg";
+//import chicagoHdImg from "./images/sawyer-bengtson-umRPY9w3q1c-unsplash.jpg";
 // Generate a number between 0 and 10, including 10
 function generateRandomInt(max) {
   return Math.floor(Math.random() * max) + 1;
@@ -48,17 +48,20 @@ function setError(errType) {
   window._uxa = window._uxa || [];
   var errId = generateRandomInt(1000000);
   console.log('*** Error triggered: ' + errType);
-  if (errType === 'js') {
+  if (errType === 'custom') {
     window._uxa.push([
       'trackError',
       'JS error manually generated',
       {
-        'type': 'javascript',
+        'type': 'custom',
         'initiator': 'button_click',
         'errId': errId
       }
     ]);
     console.error('JavaScript error: ' + errId);
+  } if (errType === 'js') {
+    
+    window._uxa.buttonPush(['fakeError']);
   }
 }
 // Live Signals alerts
@@ -100,6 +103,7 @@ export default function IndexPage() {
                 <button onClick={() => triggerRecording('ETP')}>Trigger ETP (page) Recording</button><br />
                 <button onClick={() => triggerRecording('ETS')}>Trigger ETS (session) Recording</button><br />
                 <button onClick={() => setError('js')}>Trigger JS Error</button><br />
+                <button onClick={() => setError('custom')}>Trigger Custom Error</button><br />
               </div><br />
               <div>
                 <label htmlFor="excludePage">Enter exclude page regex: </label>
@@ -137,11 +141,24 @@ export default function IndexPage() {
                 </form>
               </div>
           </Section>
-          <Section heading="Here's another heading without any attributes.">
+          <Section heading="Test input fields">
               <div>
-                Let's try masking this image:
-                <br></br>
-                <img src={chicagoHdImg} alt="cool chicago pic" height={400} data-cs-mask></img>
+                <label htmlFor="textInput">input type="text"</label><br />
+                <input type="text" name="textInput"></input><br /><br />
+                <label htmlFor="telInput">input type="tel"</label><br />
+                <input type="tel" name="telInput"></input><br /><br />
+                <label htmlFor="emailInput">input type="email"</label><br />
+                <input type="email" name="emailInput"></input><br /><br />
+                <label htmlFor="searchInput">input type="search"</label><br />
+                <input type="search" name="searchInput"></input><br /><br />
+                <label htmlFor="urlInput">input type="url"</label><br />
+                <input type="url" name="urlInput"></input><br /><br />
+                <label htmlFor="radioInput">input type="radio"</label><br />
+                <input type="radio" name="radioInput"></input><br /><br />
+                <label htmlFor="garbageInput">input type="garbage"</label><br />
+                <input type="garbage" name="garbageInput"></input><br /><br />
+                <label htmlFor="noInput">input without type</label><br />
+                <input name="noInput"></input><br /><br />
               </div>
           </Section>
         </Page>
