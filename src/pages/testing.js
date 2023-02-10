@@ -47,6 +47,7 @@ function setEncryptedCaptures(encryptEls) {
 function setError(errType) {
   window._uxa = window._uxa || [];
   var errId = generateRandomInt(1000000);
+  var apiUrl = document.location.origin + '/api/fake';
   console.log('*** Error triggered: ' + errType);
   if (errType === 'custom') {
     window._uxa.push([
@@ -60,8 +61,24 @@ function setError(errType) {
     ]);
     console.error('JavaScript error: ' + errId);
   } if (errType === 'js') {
-    
-    window._uxa.buttonPush(['fakeError']);
+    try {
+      window._uxa.buttonPush(['fakeError']);      
+    } catch (error) {
+      console.error(error);
+    }
+
+  } if (errType === 'api') {
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'X-Tuovila-Key': '12345678',
+        'X-Tuovila-Host': 'tuovila.com',
+        'X-Tuovila-Content': '{"username": "test", "email": "fake@email.com", "source": "tuovila.com", "auth_code": "1234"}'
+      },
+    })
+      /*.then(response => response.json())
+      .then(response => console.log(response))*/
+      .catch(err => console.error(err));
   }
 }
 // Live Signals alerts
@@ -84,7 +101,7 @@ if (typeof window !== "undefined") {
           alert('Oh no, please don\'t leave! Fine, whatever. Just go.');
         }
         if (lsType === 'excessive_pastes_fraud_signal') {
-          alert('Look, the promo code is invalid, okay?');
+          alert('L@@k, the promo code is iNvALiD, okay?');
         }
       },
       false
@@ -103,6 +120,7 @@ export default function IndexPage() {
                 <button onClick={() => triggerRecording('ETP')}>Trigger ETP (page) Recording</button><br />
                 <button onClick={() => triggerRecording('ETS')}>Trigger ETS (session) Recording</button><br />
                 <button onClick={() => setError('js')}>Trigger JS Error</button><br />
+                <button onClick={() => setError('api')}>Trigger API Error</button><br />
                 <button onClick={() => setError('custom')}>Trigger Custom Error</button><br />
               </div><br />
               <div>
