@@ -52,7 +52,7 @@ function setError(errType) {
   if (errType === 'custom') {
     window._uxa.push([
       'trackError',
-      'JS error manually generated',
+      'FATAL: Manually generated custom error!',
       {
         type: 'custom',
         initiator: 'button_click',
