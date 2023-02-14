@@ -54,9 +54,9 @@ function setError(errType) {
       'trackError',
       'JS error manually generated',
       {
-        'type': 'custom',
-        'initiator': 'button_click',
-        'errId': errId
+        type: 'custom',
+        initiator: 'button_click',
+        errId: errId
       }
     ]);
     console.error('JavaScript error: ' + errId);
