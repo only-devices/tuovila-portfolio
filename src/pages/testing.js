@@ -140,7 +140,7 @@ export default function IndexPage() {
                 The ID of <span id={dynId}><b>this specific string</b></span> is <i>{dynId}</i>. Use it in the above input boxes accordingly.
               </div>
           </Section>
-          <Section heading="Here's a fake form!">
+          <Section heading="Here's a fake order form!">
               <div>
                 <form name="test" action="/submit" data-netlify="true">
                   <label htmlFor="firstName">First name: (field below has data-cs-encrypt)
@@ -149,10 +149,13 @@ export default function IndexPage() {
                   <label htmlFor="lastName">Last name: (field below has data-cs-encrypt)
                     <div><input type="text" id="lastName-input" label="what" name="lastName" required={true} data-cs-encrypt /></div><br />
                   </label>
-                  <label htmlFor="jobTitle">Job Title: (field below has data-cs-encrypt)
+                  <label htmlFor="jobTitle">Job Title:
                     <div><input type="text" id="jobTitle-input" name="jobTitle" /></div><br />
                   </label>
-                  <label htmlFor="fraudBox">Do fraudulent behavior here
+                  <label htmlFor="quantity">Order quantity:
+                    <div><input type="number" id="quantity-input" name="quantity" /></div><br />
+                  </label>
+                  <label htmlFor="fraudBox">Promo code:
                     <div><input type="text" id="fraudBox-input" name="fraudBox" /></div><br />
                   </label>
                   <div><input type="submit" value="Submit" /></div>

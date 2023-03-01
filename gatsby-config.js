@@ -31,7 +31,7 @@ module.exports = {
               includeInDevelopment: false,
               defaultDataLayer: function () {
                 return {
-                  pageType: window.pageType,
+                  pageType: location.pathname
                 }
               },
               routeChangeEventName: "routeChangeEvent",

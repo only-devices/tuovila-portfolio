@@ -7,6 +7,12 @@ function generateRandomInteger(max) {
 }
 
 const orderNo = generateRandomInteger(10000000);
+const orderEvent = {
+  "event": "purchase",
+  "orderId": orderNo
+}
+
+window.dataLayer.push(orderEvent);
 
 export default function IndexPage() {
   return (
