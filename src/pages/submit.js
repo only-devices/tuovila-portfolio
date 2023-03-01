@@ -12,7 +12,11 @@ const orderEvent = {
   "orderId": orderNo
 }
 
-window.dataLayer.push(orderEvent);
+if (window.dataLayer) {
+  window.dataLayer.push(orderEvent);
+} else {
+  console.log('**** dataLayer not detected, skipping orderEvent push ****');
+}
 
 export default function IndexPage() {
   return (
