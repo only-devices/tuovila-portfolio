@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Page, Section, Seo } from 'gatsby-theme-portfolio-minimal';
 
 // Generate a number between 0 and 10, including 10
@@ -12,13 +12,16 @@ const orderEvent = {
   "orderId": orderNo
 }
 
-if (window.dataLayer) {
-  window.dataLayer.push(orderEvent);
-} else {
-  console.log('**** dataLayer not detected, skipping orderEvent push ****');
-}
-
 export default function IndexPage() {
+  useEffect (() => {
+    const isBrowser = typeof window !== `undefined`
+    if (isBrowser && window.dataLayer) {
+      window.dataLayer.push(orderEvent);
+    } else {
+      console.log('**** dataLayer not detected, skipping orderEvent push ****');
+    }
+  })
+
   return (
     <>
       <Seo title="Process failed successfully!" />
