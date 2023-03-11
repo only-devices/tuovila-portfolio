@@ -81,8 +81,8 @@ function setError(errType) {
       .catch(err => console.error(err));
   }
 }
-// Live Signals alerts
-if (typeof window !== "undefined") { 
+////---- Live Signals alerts moved to GTM on 11-MAR-2023 ----/////
+/*if (typeof window !== "undefined") { 
     window.addEventListener(
       "Contentsquare_LiveSignal",
       (e) => {
@@ -107,6 +107,7 @@ if (typeof window !== "undefined") {
       false
     );
   }
+*/
 
 export default function IndexPage() {
     return (
