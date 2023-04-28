@@ -38,5 +38,6 @@ module.exports = {
               enableWebVitalsTracking: false,
             },
           },
+          'gatsby-plugin-netlify'
     ],
 };
