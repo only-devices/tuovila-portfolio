@@ -28,7 +28,8 @@
       
       "footer": [
         { "label": "privacy", "url": "/privacy" },
-        { "label": "testing", "url": "/testing" }
+        { "label": "testing", "url": "/testing" },
+        { "label": "sri testing", "url": "/testing-sri" }
       ]
     },
     "featureToggles": {

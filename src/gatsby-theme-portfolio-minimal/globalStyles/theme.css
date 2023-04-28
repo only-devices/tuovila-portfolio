@@ -39,3 +39,12 @@ body[data-theme='darkTheme'] {
     --code-block-comment: #8292a2;
     --code-block-tkimp: #fd971f;
 }
+
+.testing-button {
+    width: auto;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 75%;
+    padding: 0.25rem 0.75rem;
+  }
