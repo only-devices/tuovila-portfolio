@@ -117,6 +117,7 @@ export default function IndexPage() {
           <Section heading="This heading does not have any special attributes.">
               <p data-cs-encrypt>This field has the <code>data-cs-encrypt</code> attribute.</p>
               <div data-cs-mask>This field has the <code>data-cs-mask</code> attribute.</div><br />
+              <div class="data-cs-capture">This field is just a field</div><br />
               <div>
                 <button className="testing-button" onClick={() => triggerRecording('ETP')}>Trigger ETP (page) Recording</button><br />
                 <button className="testing-button" onClick={() => triggerRecording('ETS')}>Trigger ETS (session) Recording</button><br />
