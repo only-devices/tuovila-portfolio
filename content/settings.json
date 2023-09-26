@@ -29,7 +29,8 @@
       "footer": [
         { "label": "privacy", "url": "/privacy" },
         { "label": "testing", "url": "/testing" },
-        { "label": "sri", "url": "/testing#sri" }
+        { "label": "sri", "url": "/testing#sri" },
+        { "label": "automask", "url": "/automask" }
       ]
     },
     "featureToggles": {
